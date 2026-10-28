@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      margin: 0;
+      background: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 80px;
+    }
+    button {
+      border: none;
+      background: transparent;
+      font-size: 48px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <button id="speaker" aria-label="Mainkan audio">🔊</button>
+  <audio id="audio" preload="none" src="cilik.mp3"></audio>
+
+  <script>
+    const audio = document.getElementById("audio");
+    const speaker = document.getElementById("speaker");
+
+    speaker.addEventListener("click", async () => {
+      try {
+        if (audio.paused) {
+          await audio.play();
+        } else {
+          audio.pause();
+        }
+      } catch (error) {
+        alert("Audio tidak dapat dimainkan. Sila semak fail MP3.");
+      }
+    });
+  </script>
+</body>
+</html>
